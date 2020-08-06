@@ -1,42 +1,29 @@
-//
-//  MoviesTDCUITests.swift
-//  MoviesTDCUITests
-//
-//  Created by Vitor Ferraz Varela on 06/08/20.
-//  Copyright © 2020 Vitor Ferraz Varela. All rights reserved.
-//
-
 import XCTest
+import Quick
+import Nimble
+@testable import MoviesTDC
 
-class MoviesTDCUITests: XCTestCase {
+class MoviesTDCUITests: QuickSpec {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    private lazy var app = XCUIApplication()
+    var robot: MovieListRobot!
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
+    override func spec() {
+        beforeSuite {
+            self.app.launchArguments.append("UITesting")
+            self.app.launch()
+            self.robot = MovieListRobot(app: self.app)
+        }
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
+        describe("MovieList Smoke Test") {
+            context("in movie list scenne") {
+                it("show a list of movies") {
+                    self.robot.checkViewTitleIs("Movie List")
+                        .checkCellsCountEqual(3)
+                        .checkCellTitleAt(index: 0, is: "Fantastic Beasts: The Crimes of Grindelwald")
+                        .checkCellTitleAt(index: 1, is: "The Kissing Booth 2")
+                        .checkCellTitleAt(index: 2, is:  "Greyhound")
+                }
             }
         }
     }
