@@ -12,6 +12,7 @@ target 'MoviesTDC' do
     # Pods for testing
     pod 'Quick'
     pod 'Nimble'
+    pod 'SnapshotTesting', '~> 1.8.1'
   end
 
   target 'MoviesTDCUITests' do
