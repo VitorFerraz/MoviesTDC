@@ -9,14 +9,11 @@ class MovieListTests: QuickSpec {
     var movieEntity: MovieEntity!
 
     override func spec() {
-        beforeSuite {
-        }
 
         describe("Snapshot MovieList Test") {
             context("in multiple languages") {
                 context("and multiple devices") {
                     it("show the movie list") {
-                        //                    record = true
                         let devices :[(String, ViewImageConfig)] = [("iPhoneSe",.iPhoneSe),
                                                                     ("iPhone8",.iPhone8),
                                                                     ("iPhone8Plus",.iPhone8Plus)]
@@ -34,7 +31,7 @@ class MovieListTests: QuickSpec {
                                     expectation.fulfill()
                                 })
                                 self.wait(for: [expectation], timeout: .infinity)
-                                record = true
+//                                record = true
                                 let width = device.1.size?.width ?? 0.0
                                 let height = device.1.size?.height ?? 0.0
                                 assertSnapshot(matching: hostController, as: .image(size: CGSize(width: width, height: height)), named: named)

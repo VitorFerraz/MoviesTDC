@@ -20,19 +20,19 @@ class MovieListInpectorTests: QuickSpec  {
             let viewModel = MovieListViewModelMock()
             self.sut = MovieListView(viewModel: viewModel)
         }
-        describe("MovieList ViewInpector Test") {
+        describe("MovieList ViewInspector Test") {
             context("in movie list scenne") {
                 it("show a list of movies") {
                     do {
                         let list = try self.sut.body.inspect().navigationView().list(0)
-                        expect(list).toNot(beNil())
                         let numberOfItems = try list.forEach(0).count
-                        expect(numberOfItems).to(equal(3))
 
                         let firstCell = try cellForRow(at: 0, for: list)
                         let secondCell = try cellForRow(at: 1, for: list)
                         let thirdCell = try cellForRow(at: 2, for: list)
 
+                        expect(list).toNot(beNil())
+                        expect(numberOfItems).to(equal(3))
                         expect(titleForCell(cell: firstCell)).to(equal("Bacurau"))
                         expect(titleForCell(cell: secondCell)).to(equal("Avengers: Endgame"))
                         expect(titleForCell(cell: thirdCell)).to(equal("Your Name"))
@@ -50,10 +50,6 @@ class MovieListInpectorTests: QuickSpec  {
 
         func cellForRow(at index: Int, for list: InspectableView<ViewType.List>) throws -> InspectableView<ViewType.View<MovieCell>> {
             try list.forEach(0).hStack(index).view(MovieCell.self, 0)
-        }
-
-        afterEach {
-            self.sut = nil
         }
     }
 }

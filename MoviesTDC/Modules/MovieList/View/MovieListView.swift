@@ -15,10 +15,4 @@ struct MovieListView<ViewModel>: View where ViewModel: MovieListViewModelProtoco
     }
 }
 
-struct MovieListView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieListView(viewModel: MovieListViewModel())
-    }
-}
-
 

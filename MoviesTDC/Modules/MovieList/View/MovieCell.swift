@@ -29,9 +29,3 @@ struct MovieCell: View {
         }
     }
 }
-
-struct MovieCell_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieCell(movie: MovieEntity(posterUrl: "", name: "teste"))
-    }
-}
