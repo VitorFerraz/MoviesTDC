@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5349C89060DAE9AAE4F667CD /* Pods_MoviesTDC_MoviesTDCUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2676E8DE76BC8D22D55DC30A /* Pods_MoviesTDC_MoviesTDCUITests.framework */; };
 		9038B65524DDCB8200BED312 /* MovieCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038B65124DDC8F800BED312 /* MovieCellTests.swift */; };
 		9038B65624DDCB8700BED312 /* SnapshotTesting+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038B65324DDC91700BED312 /* SnapshotTesting+SwiftUI.swift */; };
+		903DE4CF24E2E47100DFA774 /* MovieListInpectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903DE4CE24E2E47100DFA774 /* MovieListInpectorTests.swift */; };
+		903DE4D224E2E4C900DFA774 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 903DE4D124E2E4C900DFA774 /* ViewInspector */; };
 		905CD07724E1E412005CF454 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 905CD07924E1E412005CF454 /* Localizable.strings */; };
 		905CD07B24E1E555005CF454 /* MovieListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905CD07A24E1E555005CF454 /* MovieListTests.swift */; };
 		90BB5C6C24DC74F000AF6091 /* MovieFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BB5C6B24DC74F000AF6091 /* MovieFetcher.swift */; };
@@ -62,6 +64,7 @@
 		745D64470D020E8A210572A5 /* Pods-MoviesTDC-MoviesTDCUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTDC-MoviesTDCUITests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesTDC-MoviesTDCUITests/Pods-MoviesTDC-MoviesTDCUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9038B65124DDC8F800BED312 /* MovieCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellTests.swift; sourceTree = "<group>"; };
 		9038B65324DDC91700BED312 /* SnapshotTesting+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SnapshotTesting+SwiftUI.swift"; sourceTree = "<group>"; };
+		903DE4CE24E2E47100DFA774 /* MovieListInpectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListInpectorTests.swift; sourceTree = "<group>"; };
 		905CD07224E1E36F005CF454 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		905CD07824E1E412005CF454 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		905CD07A24E1E555005CF454 /* MovieListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTests.swift; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D46A630C802F055831333F92 /* Pods_MoviesTDCTests.framework in Frameworks */,
+				903DE4D224E2E4C900DFA774 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,10 +148,19 @@
 		9038B65024DDC8DB00BED312 /* Snapshots */ = {
 			isa = PBXGroup;
 			children = (
+				905CD07A24E1E555005CF454 /* MovieListTests.swift */,
 				9038B65124DDC8F800BED312 /* MovieCellTests.swift */,
 				9038B65324DDC91700BED312 /* SnapshotTesting+SwiftUI.swift */,
 			);
 			path = Snapshots;
+			sourceTree = "<group>";
+		};
+		903DE4CD24E2E44C00DFA774 /* ViewInpector */ = {
+			isa = PBXGroup;
+			children = (
+				903DE4CE24E2E47100DFA774 /* MovieListInpectorTests.swift */,
+			);
+			path = ViewInpector;
 			sourceTree = "<group>";
 		};
 		90BB5C6A24DC74E200AF6091 /* MovieFetcher */ = {
@@ -215,10 +228,10 @@
 		90EE219424DC54EB0055B929 /* MoviesTDCTests */ = {
 			isa = PBXGroup;
 			children = (
+				903DE4CD24E2E44C00DFA774 /* ViewInpector */,
 				9038B65024DDC8DB00BED312 /* Snapshots */,
 				90EE219524DC54EB0055B929 /* MoviesTDCTests.swift */,
 				90EE219724DC54EB0055B929 /* Info.plist */,
-				905CD07A24E1E555005CF454 /* MovieListTests.swift */,
 			);
 			path = MoviesTDCTests;
 			sourceTree = "<group>";
@@ -396,6 +409,9 @@
 				90EE219324DC54EB0055B929 /* PBXTargetDependency */,
 			);
 			name = MoviesTDCTests;
+			packageProductDependencies = (
+				903DE4D124E2E4C900DFA774 /* ViewInspector */,
+			);
 			productName = MoviesTDCTests;
 			productReference = 90EE219124DC54EB0055B929 /* MoviesTDCTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -453,6 +469,9 @@
 				"pt-BR",
 			);
 			mainGroup = 90EE217224DC54EA0055B929;
+			packageReferences = (
+				903DE4D024E2E4C900DFA774 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+			);
 			productRefGroup = 90EE217C24DC54EA0055B929 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -624,6 +643,7 @@
 			files = (
 				9038B65524DDCB8200BED312 /* MovieCellTests.swift in Sources */,
 				90EE219624DC54EB0055B929 /* MoviesTDCTests.swift in Sources */,
+				903DE4CF24E2E47100DFA774 /* MovieListInpectorTests.swift in Sources */,
 				905CD07B24E1E555005CF454 /* MovieListTests.swift in Sources */,
 				9038B65624DDCB8700BED312 /* SnapshotTesting+SwiftUI.swift in Sources */,
 			);
@@ -961,6 +981,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		903DE4D024E2E4C900DFA774 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		903DE4D124E2E4C900DFA774 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 903DE4D024E2E4C900DFA774 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 90EE217324DC54EA0055B929 /* Project object */;
 }
