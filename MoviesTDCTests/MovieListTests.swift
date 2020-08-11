@@ -4,8 +4,6 @@ import Quick
 import Nimble
 @testable import MoviesTDC
 
-
-
 class MovieListTests: QuickSpec {
 
     var movieEntity: MovieEntity!
@@ -31,24 +29,20 @@ class MovieListTests: QuickSpec {
                                 let hostController = UIHostingController(rootView: contentView)
                                 let named = "Device-\(device.0)-Language-\(language)"
                                 let expectation = XCTestExpectation(description: named)
-                                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 8.0, execute: {
+                                assertSnapshot(matching: hostController, as: .windowedImage)
+                                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
                                     expectation.fulfill()
                                 })
                                 self.wait(for: [expectation], timeout: .infinity)
                                 record = true
-                                assertSnapshot(matching: hostController, as: .image(on: device.1), named: named)
-
+                                let width = device.1.size?.width ?? 0.0
+                                let height = device.1.size?.height ?? 0.0
+                                assertSnapshot(matching: hostController, as: .image(size: CGSize(width: width, height: height)), named: named)
                             }
                         }
                     }
                 }
             }
         }
-    }
-}
-
-struct MovieListTests_Previews: PreviewProvider {
-    static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
