@@ -14,9 +14,9 @@ class MovieListTests: QuickSpec {
             context("in multiple languages") {
                 context("and multiple devices") {
                     it("show the movie list") {
-                        let devices :[(String, ViewImageConfig)] = [("iPhoneSe",.iPhoneSe),
-                                                                    ("iPhone8",.iPhone8),
-                                                                    ("iPhone8Plus",.iPhone8Plus)]
+                        let devices: [(String, ViewImageConfig)] = [("iPhoneSe", .iPhoneSe),
+                                                                    ("iPhone8", .iPhone8),
+                                                                    ("iPhone8Plus", .iPhone8Plus)]
                         let languages: [Locale] = [Locale(identifier: "pt-br"),
                                                    Locale(identifier: "en")]
 
@@ -24,14 +24,16 @@ class MovieListTests: QuickSpec {
                             devices.forEach { device in
                                 let contentView = MovieListView(viewModel: MovieListViewModelMock()).environment(\.locale, language)
                                 let hostController = UIHostingController(rootView: contentView)
+
                                 let named = "Device-\(device.0)-Language-\(language)"
                                 let expectation = XCTestExpectation(description: named)
-                                assertSnapshot(matching: hostController, as: .windowedImage)
+
+                                putInViewHierarchy(hostController)
                                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
                                     expectation.fulfill()
                                 })
                                 self.wait(for: [expectation], timeout: .infinity)
-//                                record = true
+                                record = true
                                 let width = device.1.size?.width ?? 0.0
                                 let height = device.1.size?.height ?? 0.0
                                 assertSnapshot(matching: hostController, as: .image(size: CGSize(width: width, height: height)), named: named)
@@ -43,3 +45,9 @@ class MovieListTests: QuickSpec {
         }
     }
 }
+
+func putInViewHierarchy(_ vc: UIViewController) {
+    let window = UIApplication.shared.windows.first!
+    window.rootViewController = vc
+}
+
